@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            var memoTxt = document.getElementById('memoTxt');
+            var demo = document.querySelector('#demo');
+            var clickBtn = document.querySelector('#clickBtn');
+            var resetBtn = document.querySelector('#resetBtn');
+
+            // TDD : 테스트 주도 기발 ...
+            console.log(memoTxt, demo, clickBtn, resetBtn);
+
+            // Enter 키를 눌렀을 때 메모 텍스트를 출력하는 이벤트 핸들러 추가
+            memoTxt.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    var memoTxtVal = memoTxt.value;
+                    demo.innerHTML = memoTxtVal;
+                    memoTxt.value = "";
+                    memoTxt.focus();
+                }
+            });
+
+            // clickBtn 클릭 시 메모 텍스트를 출력하는 이벤트 핸들러 추가
+            clickBtn.addEventListener('click', function() {
+                var memoTxtVal = memoTxt.value;
+                demo.innerHTML = memoTxtVal;
+                memoTxt.value = "";
+                memoTxt.focus();
+            });
+
+            // resetBtn 클릭 시 메모 텍스트와 출력 내용 초기화하는 이벤트 핸들러 추가
+            resetBtn.addEventListener('click', function() {
+                memoTxt.value = "";
+                demo.innerHTML = "JavaScript can change HTML content.";
+                memoTxt.focus();
+            });
+        }
+    </script>
+</head>
+<body>
+    메모: <input type="text" id="memoTxt" value="안녕 세계">
+    <p id="demo">JavaScript can change HTML content.</p>
+
+    <!-- 인터널 방식 적용 -->
+    <button type="button" id="clickBtn">Click</button>
+    <button type="button" id="resetBtn">Reset</button>
+</body>
+</html>
